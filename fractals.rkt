@@ -8,7 +8,8 @@
 
 
 (define CUTOFF 2)
-(define CANVAS (empty-scene 350 350))
+(define FLAKESIZE 400)
+(define FLAKEVAS (empty-scene (* FLAKESIZE 5/4) (* FLAKESIZE 5/4)))
 
 
 ; ============================
@@ -88,6 +89,7 @@
 
 (define (von-kochflake l)
   ; N -> Img
+  ; make a perfect rendition of a von Koch snowflake
   (local (
           (define (recursor l)
             (cond
@@ -109,15 +111,15 @@
       (beside
        (rotate  120 FLAKENESS)
        (rotate -120 FLAKENESS)))
-     CANVAS)))
+     FLAKEVAS)))
     
 
-;(sierpinski 256)
+(sierpinski 512)
 
-;(squarepinski 243)
+(squarepinski 486)
 
-;(circle-fractal 200)
+(circle-fractal 100)
 
-(von-kochflake 300) 
+(von-kochflake FLAKESIZE) 
 
 ;(foldr + -1 (map (lambda (n) (* 2 (expt (/ 2 5) n))) (build-list 200 identity)))
